@@ -27,7 +27,7 @@ public class Q02 {
 			}
 		}
 		
-		
+		sc.close();
 		
 	}
 }
