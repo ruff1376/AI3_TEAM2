@@ -75,7 +75,7 @@ public class Q09 {
         }
         
 
-        System.out.println("성명  출장비  오만원  만원  오천원  천원  오백원  백원  오십원  십원  오원  일원");
+        System.out.println("성명\t출장비\t오만원\t만원\t오천원\t천원\t오백원\t백원\t오십원\t십원\t오원\t일원");
         System.out.print(name[0]+"\t"+money[0]+"\t");
         for (int i : human1) {
             System.out.print(i + "\t");
@@ -92,7 +92,7 @@ public class Q09 {
         for (int i : human4) {
             System.out.print(i + "\t");
         }System.out.println();
-        System.out.print("전체화폐매수 : ");
+        System.out.print("전체화폐매수 :\t");
         for (int i : paperSum) {
             System.out.print(i + "\t");
         }

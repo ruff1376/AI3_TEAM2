@@ -1,5 +1,6 @@
 package MISSION.KGW;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -29,6 +30,7 @@ public class Q06 {
                 
                 lotto[j] = lottoNum;
             }
+            Arrays.sort(lotto);
             System.out.print("[" +(i + 1)+ " 게임] : ");
             for (int a : lotto) {
                 System.out.print(a + " ");
