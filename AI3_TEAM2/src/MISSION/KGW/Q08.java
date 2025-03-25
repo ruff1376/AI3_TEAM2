@@ -15,7 +15,6 @@ public class Q08 {
 					count++;
 				}
 			}
-			
 			if (i%2 == 1) {
 				for (int j = n-1; j >= 0; j--) {
 					arr[i][j] = count;
