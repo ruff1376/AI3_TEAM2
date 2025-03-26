@@ -1,6 +1,6 @@
 package MISSION.KGW.Q10;
 
-public class Main {
+public class FigureTest {
 
 	public static void main(String[] args) {
 		Triangle tri = new Triangle (10,20);
