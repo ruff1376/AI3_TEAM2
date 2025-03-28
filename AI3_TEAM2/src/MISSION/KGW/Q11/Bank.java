@@ -2,13 +2,14 @@ package MISSION.KGW.Q11;
 
 import java.util.Scanner;
 
+
 public class Bank {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int menuNo;
 		Account[] accountList = new Account[1000];
 		int accountCount = 0;
-		int adminPw = 971230;
+		final int adminPw = 971230;
 		do {
 			System.out.println("===========================");
 			System.out.println("1. 계좌 등록");
@@ -20,31 +21,48 @@ public class Bank {
 			System.out.println("===========================");
 			System.out.print("입력>> ");
 			menuNo = sc.nextInt();
+			
 			sc.nextLine();
 			System.out.println();
 			switch (menuNo) {
 				case 1:
 					if (accountCount < 1000) {
-						System.out.print("계좌번호>> ");
-						String accountNum = sc.nextLine();
-						System.out.print("예금주>> ");
-						String depositorName = sc.nextLine();
-						System.out.print("최초예금액>> ");
-						int firstDeposit = sc.nextInt();
-						if (firstDeposit < 0 || firstDeposit > 1000000000) {
-								System.out.println("0원부터 10억 까지만가능");
-								break;
-							}
-							System.out.print("비밀번호>> ");
-							int password = sc.nextInt();
-							sc.nextLine();
-							Account account = new Account(accountNum, depositorName, firstDeposit, password);
-							accountList[accountCount] = account;
-							accountCount++;
-							System.out.println("'"+ depositorName + "'님의 계좌가 개설되었습니다.");
-						}
-					else {
-						System.out.println("계좌가 너무많습니다.");
+					    boolean isDuplicate = false;
+					    String accountNum = "";
+
+					    do {
+					        System.out.print("계좌번호>> ");
+					        accountNum = sc.nextLine();
+					        isDuplicate = false;
+					        for (int i = 0; i < accountCount; i++) {
+					            if (accountList[i] != null && accountList[i].getBankAccount().equals(accountNum)) {
+					                isDuplicate = true;
+					                break;
+					            }
+					        }
+					        if (isDuplicate) {
+					            System.err.println("계좌번호가 중복입니다.");
+					        }
+					    } while (isDuplicate);
+
+					    System.out.print("예금주>> ");
+					    String depositorName = sc.nextLine();
+					    System.out.print("최초예금액>> ");
+					    int firstDeposit = sc.nextInt();
+					    if (firstDeposit < 0 || firstDeposit > 1000000000) {
+					        System.out.println("0원부터 10억 까지만 가능합니다.");
+					        return;
+					    }
+
+					    System.out.print("비밀번호>> ");
+					    int password = sc.nextInt();
+					    sc.nextLine();
+					    Account account = new Account(accountNum, depositorName, firstDeposit, password);
+					    accountList[accountCount] = account;
+					    accountCount++;
+					    System.out.println("'" + depositorName + "'님의 계좌가 개설되었습니다.");
+					} else {
+					    System.out.println("계좌가 너무 많습니다.");
 					}
 					break;
 				case 2:
@@ -162,7 +180,7 @@ public class Bank {
 						System.out.println("예금주\t\t\t 계좌번호\t\t\t잔고");
 						for (int i = 0; i <= accountCount; i++) {
 							if (accountList[i] != null) {
-								System.out.println(accountList[i].getDepositor()+"\t\t\t"+accountList[i].getBankAccount()+"\t\t\t"+accountList[i].getBalance());
+								System.out.println(accountList[i].getDepositor()+"\t\t\t"+accountList[i].getBankAccount()+"\t\t"+accountList[i].getBalance());
 							}
 						}
 					}
