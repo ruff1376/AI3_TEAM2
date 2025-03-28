@@ -29,7 +29,7 @@ class Lotto {
         lottoList.add(list);
     }
     public void printList(int a) {
-        System.out.println(lottoList.get(a)+"\t");
+        System.out.print(lottoList.get(a)+"\t");
     }
     public ArrayList<Integer> get(int index) {
         return lottoList.get(index); // lottoList의 인덱스를 이용해 리스트를 반환
@@ -59,7 +59,6 @@ public class Q13 {
         Scanner sc = new Scanner(System.in);
         System.out.print("몇 게임? ");
         int N = sc.nextInt();
-        sc.nextLine();
         int atml = 0;
         int jadongSoodong[] = new int[5];
         System.out.println();
@@ -140,7 +139,7 @@ public class Q13 {
         System.out.println("########### 인생여전 Lottoria ##########");
         System.out.println("발행일        : " + buyTime);
         System.out.println("추첨일        : " + lottoDay + " 21:00:00");
-        System.out.println("지급기한      : " + targetTimeFormatted);
+        System.out.println("지급기한		: " + targetTimeFormatted);
         System.out.println("----------------------------------------");
         for ( int i = 0; i < N; i++){
             char ch = (char)(65+i);
@@ -157,21 +156,20 @@ public class Q13 {
         System.out.println("#######################################");
         System.out.println();
         ArrayList<Integer> lottoNum = new ArrayList<Integer>();
-        int lotbo =0;
+        
         for (int i = 0; i <7; i++) {
             int luckyNum = (int) (Math.random()*45) +1;
             if (lottoNum.contains(luckyNum)) i--;
 				else lottoNum.add(luckyNum);
-            if (i==6 || !lottoNum.contains(luckyNum) ) lotbo = luckyNum;
-                else i--;
-				Collections.sort(lottoNum);
+			Collections.sort(lottoNum);
         }
+        int bonusNum = lottoNum.get(6);
         System.out.print("당첨 번호 : ");
         for (int j = 0; j < lottoNum.size()-1; j++) {
             System.out.print(lottoNum.get(j) + " ");
         }
         System.out.println();
-        System.out.println("보너스 번호 : " + lotbo);
+        System.out.println("보너스 번호 : " + bonusNum);
         System.out.println();
         System.out.println("#######################################");
         int count = 0;
@@ -194,14 +192,14 @@ public class Q13 {
                     result[j] = count;
                     count = 0;
                 }
-            for ( int j = 0; j < N; j++) {
-                for (int k = 5; k < 7; k++) {
-                    if (lottoNum.contains(lottoList.get(j).get(k))) {
-                        bonCount++;
+            bonusNum = lottoNum.get(6); // 당첨 번호의 보너스 번호
+            for (int j = 0; j < N; j++) {
+                // 각 게임의 번호를 순차적으로 비교하여, 보너스 번호 (lottoNum.get(6))과 일치하는지 체크
+                for (int k = 0; k < 6; k++) {
+                    if (lottoList.get(j).get(k) == bonusNum) {
+                        bonCount++;  // 보너스 번호와 일치하는 경우마다 bonCount 증가
                     }
                 }
-                bonResult[j] += bonCount;
-                bonCount = 0;
             }
             if (bonResult[i] > 0 ) {
                 switch (result[i] + bonResult[i]) {
@@ -213,14 +211,19 @@ public class Q13 {
                     break;
                     case 3: System.out.println("    (5등)"); 
                     break;
+                    default : System.out.println("    (낙첨)");
+                    break;
                 }
             }
             else {
                 switch (result[i]) {
                     case 6: System.out.println("    (1등)");
                     break;
+                    default : System.out.println("    (낙첨)");
+                    break;
                 }
             }
+            System.out.println();
         }
         System.out.println("#######################################");
 
