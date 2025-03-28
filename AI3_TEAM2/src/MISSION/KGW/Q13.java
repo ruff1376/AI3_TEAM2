@@ -61,7 +61,7 @@ public class Q13 {
         int N = sc.nextInt();
         int atml = 0;
         int jadongSoodong[] = new int[5];
-        if ( N < 6) {
+        if ( N < 6 || N > 0 ) {
         for ( int i = 0; i < N; i++) {
             System.out.print("[" + (i+1) + "게임] (1.자동 / 2.수동) : ");
             atml = sc.nextInt();
@@ -90,7 +90,7 @@ public class Q13 {
                     int manual = sc.nextInt();
                     if (manual > 45 || manual < 1) {
                         j--;
-                        System.out.println("1~45 중에요;");
+                        System.err.println("1~45 중에");
                         continue;
                     }
                     if (lottoTemp.contains(manual)) {
@@ -191,13 +191,13 @@ public class Q13 {
                     result[j] = count;
                     count = 0;
                 }
-            bonusNum = lottoNum.get(6); // 당첨 번호의 보너스 번호
+            bonusNum = lottoNum.get(6);
             for (int j = 0; j < N; j++) {
-                // 각 게임의 번호를 순차적으로 비교하여, 보너스 번호 (lottoNum.get(6))과 일치하는지 체크
                 for (int k = 0; k < 6; k++) {
                     if (lottoList.get(j).get(k) == bonusNum) {
-                        bonCount++;  // 보너스 번호와 일치하는 경우마다 bonCount 증가
-                    }
+                        bonCount++;
+                    }bonResult[j] = bonCount;
+                    bonCount = 0;
                 }
             }
             if (bonResult[i] > 0 ) {
