@@ -61,7 +61,6 @@ public class Q13 {
         int N = sc.nextInt();
         int atml = 0;
         int jadongSoodong[] = new int[5];
-        System.out.println();
         if ( N < 6) {
         for ( int i = 0; i < N; i++) {
             System.out.print("[" + (i+1) + "게임] (1.자동 / 2.수동) : ");
@@ -136,10 +135,10 @@ public class Q13 {
         String targetTimeFormatted = targetTime.format(formatter2); // 포맷 적용
 
         
-        System.out.println("########### 인생여전 Lottoria ##########");
-        System.out.println("발행일        : " + buyTime);
-        System.out.println("추첨일        : " + lottoDay + " 21:00:00");
-        System.out.println("지급기한		: " + targetTimeFormatted);
+        System.out.println("########### 인생역전 Lottoria ##########");
+        System.out.println("발행일\t: " + buyTime);
+        System.out.println("추첨일\t: " + lottoDay + " 21:00:00");
+        System.out.println("지급기한\t: " + targetTimeFormatted);
         System.out.println("----------------------------------------");
         for ( int i = 0; i < N; i++){
             char ch = (char)(65+i);
