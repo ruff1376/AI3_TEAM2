@@ -28,9 +28,22 @@ class Lotto {
     public void addList(ArrayList<Integer> list) {
         lottoList.add(list);
     }
+//    public void printList(int a) {
+//        System.out.print(lottoList.get(a)+"\t");
+//    }
     public void printList(int a) {
-        System.out.print(lottoList.get(a)+"\t");
+        // 해당 행을 가져오기
+        ArrayList<Integer> selectedRow = lottoList.get(a);
+        
+        // 각 요소를 탭으로 구분하여 출력
+        for (int j = 0; j < selectedRow.size(); j++) {
+        	System.out.print(String.format("%02d", selectedRow.get(j)));
+            if (j < selectedRow.size() - 1) {
+                System.out.print("  ");
+            }
+        }
     }
+    
     public ArrayList<Integer> get(int index) {
         return lottoList.get(index); // lottoList의 인덱스를 이용해 리스트를 반환
     }
@@ -43,7 +56,6 @@ public class Q13 {
         // 현재 날짜와 시간 가져오기
         LocalDateTime now = LocalDateTime.now();
         LocalDate today = now.toLocalDate();
-        LocalTime currentTime = now.toLocalTime();
 
         // 이번 주 토요일 날짜 계산
         LocalDate thisSaturday = today.with(DayOfWeek.SATURDAY);
@@ -162,7 +174,15 @@ public class Q13 {
 				else lottoNum.add(luckyNum);
 			Collections.sort(lottoNum);
         }
-        int bonusNum = lottoNum.get(6);
+        int bonusNum = 0;
+        boolean bonustype = true;
+        do {
+        	bonusNum = (int) (Math.random()*45) +1;
+        	if (!lottoNum.contains(bonusNum))
+        		bonustype = false;
+        	else bonusNum = 0;
+			
+		} while (bonustype);
         System.out.print("당첨 번호 : ");
         for (int j = 0; j < lottoNum.size()-1; j++) {
             System.out.print(lottoNum.get(j) + " ");
@@ -202,23 +222,23 @@ public class Q13 {
             }
             if (bonResult[i] > 0 ) {
                 switch (result[i] + bonResult[i]) {
-                    case 6: System.out.println("    (2등)");
+                    case 6: System.out.println("\t(2등)");
                     break;
-                    case 5: System.out.println("    (3등)"); 
+                    case 5: System.out.println("\t(3등)"); 
                     break;
-                    case 4: System.out.println("    (4등)"); 
+                    case 4: System.out.println("\t(4등)"); 
                     break;
-                    case 3: System.out.println("    (5등)"); 
+                    case 3: System.out.println("\t(5등)"); 
                     break;
-                    default : System.out.println("    (낙첨)");
+                    default : System.out.println("\t(낙첨)");
                     break;
                 }
             }
             else {
                 switch (result[i]) {
-                    case 6: System.out.println("    (1등)");
+                    case 6: System.out.println("\t(1등)");
                     break;
-                    default : System.out.println("    (낙첨)");
+                    default : System.out.println("\t(낙첨)");
                     break;
                 }
             }
