@@ -168,7 +168,7 @@ public class Q13 {
         System.out.println();
         ArrayList<Integer> lottoNum = new ArrayList<Integer>();
         
-        for (int i = 0; i <7; i++) {
+        for (int i = 0; i <6; i++) {		// 당첨 번호 선별 7개->6개
             int luckyNum = (int) (Math.random()*45) +1;
             if (lottoNum.contains(luckyNum)) i--;
 				else lottoNum.add(luckyNum);
@@ -185,13 +185,18 @@ public class Q13 {
 		} while (bonustype);
         System.out.print("당첨 번호 : ");
         DecimalFormat df2 = new DecimalFormat("00");
-        for (int j = 0; j < lottoNum.size()-1; j++) {
+        for (int j = 0; j < lottoNum.size(); j++) {
             System.out.print(df2.format(lottoNum.get(j)) + " ");
         }
         System.out.println();
         System.out.println("보너스 번호 : " + df2.format(bonusNum));
         System.out.println();
         System.out.println("################ 당첨 결과 ################");
+        
+        // 당첨 결과 test code
+//		Collections.copy(lottoList.get(0).subList(0, 3), lottoNum.subList(0, 3));
+//		lottoList.get(0).set(5, bonusNum);
+        
         int count = 0;
         int bonCount = 0;
         for ( int i = 0; i < N; i++){
@@ -212,7 +217,6 @@ public class Q13 {
                     result[j] = count;
                     count = 0;
                 }
-            bonusNum = lottoNum.get(6);
             for (int j = 0; j < N; j++) {
                 for (int k = 0; k < 6; k++) {
                     if (lottoList.get(j).get(k) == bonusNum) {
@@ -221,28 +225,38 @@ public class Q13 {
                     bonCount = 0;
                 }
             }
-            if (bonResult[i] > 0 ) {
-                switch (result[i] + bonResult[i]) {
-                    case 6: System.out.println("\t(2등)");
-                    break;
-                    case 5: System.out.println("\t(3등)"); 
-                    break;
-                    case 4: System.out.println("\t(4등)"); 
-                    break;
-                    case 3: System.out.println("\t(5등)"); 
-                    break;
-                    default : System.out.println("\t(낙첨)");
-                    break;
-                }
-            }
-            else {
-                switch (result[i]) {
-                    case 6: System.out.println("\t(1등)");
-                    break;
-                    default : System.out.println("\t(낙첨)");
-                    break;
-                }
-            }
+            
+            // 당첨 결과 출력 수정
+            if (result[i] == 6) System.out.println("\t(1등)");
+            else if (result[i] == 5 && bonResult[i] == 1) System.out.println("\t(2등)");
+            else if (result[i] == 5 && bonResult[i] == 0) System.out.println("\t(3등)");
+            else if (result[i] == 4) System.out.println("\t(4등)");
+            else if (result[i] == 3) System.out.println("\t(5등)");
+            else System.out.println("\t(낙첨)");
+            
+            // 기존 당첨 결과 출력
+//            if (bonResult[i] > 0 ) {
+//                switch (result[i] + bonResult[i]) {
+//                    case 6: System.out.println("\t(2등)");
+//                    break;
+//                    case 5: System.out.println("\t(3등)"); 
+//                    break;
+//                    case 4: System.out.println("\t(4등)"); 
+//                    break;
+//                    case 3: System.out.println("\t(5등)"); 
+//                    break;
+//                    default : System.out.println("\t(낙첨)");
+//                    break;
+//                }
+//            }
+//            else {
+//                switch (result[i]) {
+//                    case 6: System.out.println("\t(1등)");
+//                    break;
+//                    default : System.out.println("\t(낙첨)");
+//                    break;
+//                }
+//            }
             System.out.println();
         }
         System.out.println("#########################################");
