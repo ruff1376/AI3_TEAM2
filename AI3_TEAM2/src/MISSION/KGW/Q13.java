@@ -147,11 +147,11 @@ public class Q13 {
         String targetTimeFormatted = targetTime.format(formatter2); // 포맷 적용
 
         
-        System.out.println("########### 인생역전 Lottoria ##########");
+        System.out.println("############ 인생역전 Lottoria ############");
         System.out.println("발행일\t: " + buyTime);
         System.out.println("추첨일\t: " + lottoDay + " 21:00:00");
         System.out.println("지급기한\t: " + targetTimeFormatted);
-        System.out.println("----------------------------------------");
+        System.out.println("-----------------------------------------");
         for ( int i = 0; i < N; i++){
             char ch = (char)(65+i);
             System.out.print(ch + " ");
@@ -162,9 +162,9 @@ public class Q13 {
             System.out.println();
         }
         DecimalFormat df = new DecimalFormat("₩ #,###");
-        System.out.println("---------------------------------------");
+        System.out.println("----------------------------------------");
         System.out.println("금액                              "+ df.format(N*1000));
-        System.out.println("#######################################");
+        System.out.println("#########################################");
         System.out.println();
         ArrayList<Integer> lottoNum = new ArrayList<Integer>();
         
@@ -184,13 +184,14 @@ public class Q13 {
 			
 		} while (bonustype);
         System.out.print("당첨 번호 : ");
+        DecimalFormat df2 = new DecimalFormat("00");
         for (int j = 0; j < lottoNum.size()-1; j++) {
-            System.out.print(lottoNum.get(j) + " ");
+            System.out.print(df2.format(lottoNum.get(j)) + " ");
         }
         System.out.println();
-        System.out.println("보너스 번호 : " + bonusNum);
+        System.out.println("보너스 번호 : " + df2.format(bonusNum));
         System.out.println();
-        System.out.println("#######################################");
+        System.out.println("################ 당첨 결과 ################");
         int count = 0;
         int bonCount = 0;
         for ( int i = 0; i < N; i++){
@@ -244,7 +245,7 @@ public class Q13 {
             }
             System.out.println();
         }
-        System.out.println("#######################################");
+        System.out.println("#########################################");
 
 
     }
