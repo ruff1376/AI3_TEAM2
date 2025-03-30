@@ -76,26 +76,29 @@ public class Q09 {
         
 
         System.out.println("성명\t출장비\t오만원\t만원\t오천원\t천원\t오백원\t백원\t오십원\t십원\t오원\t일원");
-        System.out.print(name[0]+"\t"+money[0]+"\t");
-        for (int i : human1) {
-            System.out.print(i + "\t");
-        }System.out.println();
-        System.out.print(name[1]+"\t"+money[1]+"\t");
-        for (int i : human2) {
-            System.out.print(i + "\t");
-        }System.out.println();
-        System.out.print(name[2]+"\t"+money[2]+"\t");
-        for (int i : human3) {
-            System.out.print(i + "\t");
-        }System.out.println();
-        System.out.print(name[3]+"\t"+money[3]+"\t");
-        for (int i : human4) {
-            System.out.print(i + "\t");
-        }System.out.println();
+        for (int i = 0; i <4; i++) {
+            System.out.print(name[i]+"\t"+money[i]+"\t");
+            for (int j = 0; j < 10; j++) {
+                if (i == 0) {
+                    System.out.print(human1[j] + "\t");
+                }
+                else if (i == 1) {
+                    System.out.print(human2[j] + "\t");
+                }
+                else if (i == 2) {
+                    System.out.print(human3[j] + "\t");
+                }
+                else if (i == 3) {
+                    System.out.print(human4[j] + "\t");
+                }
+            }
+            System.out.println();
+        }
         System.out.print("전체화폐매수 :\t");
         for (int i : paperSum) {
             System.out.print(i + "\t");
         }
+
         
 
 

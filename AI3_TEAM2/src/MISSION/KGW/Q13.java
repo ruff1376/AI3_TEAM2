@@ -98,7 +98,25 @@ public class Q13 {
                 ArrayList<Integer> lottoTemp = new ArrayList<Integer>();
 
                 for (int j =0; j<6; j++) {
-                    System.out.print( j+1 + " : ");
+                    // System.out.print( j+1 + " : ");
+                    if ( j == 0) {
+                        System.out.print("① : ");
+                    }
+                    else if (j == 1) {
+                        System.out.print("② : ");
+                    }
+                    else if (j == 2) {
+                        System.out.print("③ : ");
+                    }
+                    else if (j == 3) {
+                        System.out.print("④ : ");
+                    }
+                    else if (j == 4) {
+                        System.out.print("⑤ : ");
+                    }
+                    else if (j == 5) {
+                        System.out.print("⑥ : ");
+                    }
                     int manual = sc.nextInt();
                     if (manual > 45 || manual < 1) {
                         j--;
