@@ -139,7 +139,11 @@ public class Q13 {
         String buyTime = buyDay.format(formatter1);
 
         // 이번 주 토요일 계산
+        // 토요일에사면 추첨일 다음주로 밀기
         LocalDate saturday = sat.with(DayOfWeek.SATURDAY);
+        if (buyDay.isAfter(startDrawTime)) {
+            saturday = sat.plusWeeks(1).minusDays(1);
+        }
         String lottoDay = saturday.format(formatter2); // String 형태
 
         // 1년 1일 후 계산
@@ -199,6 +203,8 @@ public class Q13 {
         
         int count = 0;
         int bonCount = 0;
+        int result[] = new int[N];
+        int bonResult[] = new int[N];
         for ( int i = 0; i < N; i++){
             char ch = (char)(65+i);
             System.out.print(ch + " ");
@@ -206,8 +212,6 @@ public class Q13 {
                 System.out.print("자 동 ");
             }else System.out.print("수 동 ");
             lottoList.printList(i);
-            int result[] = new int[N];
-            int bonResult[] = new int[N];
             for (int j = 0; j < N; j++) {
                     for (int k = 0; k < 6; k++) {
                         if (lottoNum.contains(lottoList.get(j).get(k))) {
