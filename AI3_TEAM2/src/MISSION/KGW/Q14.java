@@ -10,59 +10,74 @@ import java.util.StringTokenizer;
 
 
 class Student {
-	String no;
+	int no;
 	String name;
-	String score;
+	int score;
 	String major;
 	
-	List<ArrayList> stoken = new ArrayList<>();
 	
 	public Student() {
-		this("", "", "", "");
+		this(0, "", 0, "");
 	}
-	public Student(String no, String name, String score, String major) {
+
+	public Student(int no, String name, int score, String major) {
 		this.no = no;
 		this.name = name;
 		this.score = score;
 		this.major = major;
 	}
-	public String getNo() {
-		return no;
+
+	public int getNo() {
+		return this.no;
 	}
-	public void setNo(String no) {
+
+	public void setNo(int no) {
 		this.no = no;
 	}
+
 	public String getName() {
-		return name;
+		return this.name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getScore() {
-		return score;
+
+	public int getScore() {
+		return this.score;
 	}
-	public void setScore(String score) {
+
+	public void setScore(int score) {
 		this.score = score;
 	}
+
 	public String getMajor() {
-		return major;
+		return this.major;
 	}
+
 	public void setMajor(String major) {
 		this.major = major;
 	}
-	
-	public void add(int i) {
-		
+
+	@Override
+	public String toString() {
+		return "{" +
+			" no='" + getNo() + "'" +
+			", name='" + getName() + "'" +
+			", score='" + getScore() + "'" +
+			", major='" + getMajor() + "'" +
+			"}";
 	}
 	
+
 }
 
 public class Q14 {
 
 	public static void main(String[] args) {
-		String filePath = "C:\\KGW\\GITHUB\\AI3_TEAM2\\AI3_TEAM2\\src\\MISSION\\KGW\\student.txt";
-		ArrayList<Student> studentList = new ArrayList<Student>();
-		List<ArrayList> stoken = new ArrayList<>();
+		String filePath = "C:\\AI3\\AI3_TEAM2\\AI3_TEAM2\\src\\MISSION\\KGW\\student.txt";
+		List<Student> studentList = new ArrayList<Student>();
+		List<ArrayList<String>> stoken = new ArrayList<>();
 		try(
 			FileReader fr = new FileReader(filePath);
 			BufferedReader br = new BufferedReader(fr);
@@ -82,17 +97,25 @@ public class Q14 {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		int a;
+		int b;
 		
-		for ( int i = 0; i < stoken.size()-1; i++) {
+		for ( int i = 0; i < stoken.size(); i++) {
 			Student studen = new Student();
 			for (int j = 0; j < 4; j++) {
 				List<String> temp = stoken.get(i);
-				studen.setNo(temp.getFirst());
+				a = Integer.parseInt(temp.getFirst());
+				b = Integer.parseInt(temp.get(2));
+				studen.setNo(a);
+				studen.setScore(b);
 				studen.setName(temp.get(1));
-				studen.setScore(temp.get(2));
 				studen.setMajor(temp.getLast());
 			}studentList.add(i, studen);
 		}
+		studentList.stream()
+		.sorted(Comparator.comparing(Student::getNo))
+		.sorted(Comparator.comparing(Student::getScore).reversed())
+		.forEach(p->System.out.println(p));
 		
 		
 		

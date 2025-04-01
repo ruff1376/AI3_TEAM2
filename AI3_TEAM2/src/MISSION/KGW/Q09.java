@@ -82,13 +82,13 @@ public class Q09 {
                 if (i == 0) {
                     System.out.print(human1[j] + "\t");
                 }
-                else if (i == 1) {
+                if (i == 1) {
                     System.out.print(human2[j] + "\t");
                 }
-                else if (i == 2) {
+                if (i == 2) {
                     System.out.print(human3[j] + "\t");
                 }
-                else if (i == 3) {
+                if (i == 3) {
                     System.out.print(human4[j] + "\t");
                 }
             }
