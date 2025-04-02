@@ -61,12 +61,11 @@ class Student {
 
 	@Override
 	public String toString() {
-		return "{" +
-			" no='" + getNo() + "'" +
-			", name='" + getName() + "'" +
-			", score='" + getScore() + "'" +
-			", major='" + getMajor() + "'" +
-			"}";
+		return getNo() +
+			"\t" + getName() +
+			"\t" + getScore() +
+			"\t" + getMajor()
+			;
 	}
 	
 
@@ -75,7 +74,7 @@ class Student {
 public class Q14 {
 
 	public static void main(String[] args) {
-		String filePath = "C:\\AI3\\AI3_TEAM2\\AI3_TEAM2\\src\\MISSION\\KGW\\student.txt";
+		String filePath = "./src/MISSION/KGW/student.txt";
 		List<Student> studentList = new ArrayList<Student>();
 		List<ArrayList<String>> stoken = new ArrayList<>();
 		try(
@@ -112,6 +111,7 @@ public class Q14 {
 				studen.setMajor(temp.getLast());
 			}studentList.add(i, studen);
 		}
+		System.out.println("번호\t이름\t성적\t반");
 		studentList.stream()
 		.sorted(Comparator.comparing(Student::getNo))
 		.sorted(Comparator.comparing(Student::getScore).reversed())
