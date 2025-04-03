@@ -36,7 +36,7 @@ public class Triangle extends Shape {
 
     @Override
     public String toString() {
-        return "{" +
+        return "Triangle " + "{" +
             " width='" + getWidth() + "'" +
             ", height='" + getHeight() + "'" +
             "}";

@@ -113,8 +113,11 @@ public class Q14 {
 		}
 		System.out.println("번호\t이름\t성적\t반");
 		studentList.stream()
-		.sorted(Comparator.comparing(Student::getNo))
-		.sorted(Comparator.comparing(Student::getScore).reversed())
+		.sorted(
+			Comparator.comparing(Student::getNo)
+			.thenComparing(Student::getScore).reversed()
+			)
+		
 		.forEach(p->System.out.println(p));
 		
 		
